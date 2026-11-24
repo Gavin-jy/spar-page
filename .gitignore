@@ -1,0 +1,8 @@
+*.local.json
+*.local.md
+__pycache__/
+tools/
+preview-*.png
+assets/videos/*
+assets/frames/*
+assets/figures/*

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SPAR: Self-Referenced World-Model Rewards for Physical Alignment in Video Generation. Explore the method and synchronized video comparisons.">
+  <meta name="theme-color" content="#f8fbfa">
+  <meta property="og:title" content="SPAR · Physical Alignment in Video Generation">
+  <meta property="og:description" content="Self-referenced world-model rewards for more physically plausible video generation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gavin-jy.github.io/spar-page/">
+  <link rel="canonical" href="https://gavin-jy.github.io/spar-page/">
+  <meta property="og:image" content="https://gavin-jy.github.io/spar-page/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SPAR: Self-Referenced World-Model Rewards for Physical Alignment in Video Generation, Zhejiang University.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gavin-jy.github.io/spar-page/assets/social-preview.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>SPAR · Self-Referenced World-Model Rewards</title>
+  <link rel="stylesheet" href="styles.css?v=20261123-tabs2">
+  <link rel="stylesheet" href="results.css?v=20261123-tabs2">
+  <link rel="preload" href="assets/fonts/dm-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-normal-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="typography.css?v=20261123-tabs2">
+  <link rel="stylesheet" href="experiments.css?v=20261123-tabs2">
+  <link rel="stylesheet" href="polish.css?v=20261123-tabs2">
+  <script src="scenes.js?v=20261123-tabs2" defer></script>
+  <script src="script.js?v=20261123-tabs2" defer></script>
+  <script src="results-data.js?v=20261123-tabs2" defer></script>
+  <script src="results-tables.js?v=20261123-tabs2" defer></script>
+</head>
+<body>
+  <a class="skip" href="#comparisons">Skip to video comparisons</a>
+  <main>
+    <header class="hero wrap">
+      <p class="eyebrow">World-model rewards · Video generation</p>
+      <h1>SP<span>A</span>R<span class="period">.</span></h1>
+      <h2>Self-Referenced World-Model Rewards<br>for Physical Alignment in Video Generation</h2>
+      <div class="authors" aria-label="Authors"><span>Junyi Zhang</span><span>Qichao Wang</span><span>Wenzhe Qian</span><span>Yuanchuan Wang</span><span>Min Zhang<sup aria-label="Corresponding author">✉</sup></span></div>
+      <p class="affiliation">Zhejiang University</p>
+      <p class="author-note">✉ Corresponding author</p>
+      <p class="lead">A video's own static frames provide the reference.<br><em>Its dynamics make the difference.</em></p>
+      <div class="resources" aria-label="Project resources">
+        <div class="resource paper" aria-disabled="true"><span>arXiv</span><small>Coming soon</small></div>
+        <div class="resource code" aria-disabled="true"><span>GitHub</span><small>Coming soon</small></div>
+        <div class="resource data" aria-disabled="true"><span>Dataset</span><small>Coming soon</small></div>
+      </div>
+    </header>
+
+    <section id="intuition" class="idea-band"><div class="wrap idea"><div><p class="eyebrow">The intuition</p><h2>Predictability alone<br><em>is not physical plausibility.</em></h2></div><div class="idea-copy"><p>A world model can find a scene easy to predict even when its motion is physically implausible. SPAR compares each video's prediction error with <strong>static clips made from its own frames</strong>, providing a <strong>content-matched reference</strong> for evaluating dynamics.</p><p><strong>Spatial and temporal refinement</strong> then focus the reward on where and when physical interactions unfold.</p><div class="idea-principle"><span>Same scene.</span><span>Static reference.</span><span>Better physical judgment.</span></div></div></div></section>
+
+    <details id="abstract" class="wrap abstract abstract-disclosure"><summary><span>Read abstract</span><span class="abstract-toggle" aria-hidden="true">+</span></summary><p>Generating videos with physically plausible dynamics remains challenging despite advances in visual quality. Latent world models offer predictive signals for evaluating physical plausibility, but higher agreement between predicted and observed features may reflect easier-to-predict scene content rather than more plausible dynamics. We propose <strong>Self-Referenced Physical Alignment Rewards (SPAR)</strong>, a framework that uses world-model predictions for inference-time physical alignment. SPAR compares each video's prediction error with that of static clips constructed by repeating its own frames, providing a content-matched reference for evaluating generated dynamics. To account for the uneven spatial and temporal distribution of physical interactions, we introduce a unified <strong>spatiotemporal reward refinement</strong> strategy. Spatial refinement emphasizes localized prediction discrepancies, while temporal refinement moderates brief error peaks and supplements prediction errors with agreement between predicted and observed feature changes. Evaluations across multiple benchmarks demonstrate that SPAR improves the physical plausibility of both text-to-video generation and image-to-video continuation, bringing generated dynamics into closer alignment with the physical regularities governing real-world events.</p></details>
+
+    <section id="comparisons" class="wrap section comparisons">
+      <div class="section-heading"><div><p class="eyebrow">01 / See the dynamics</p><h2>Physics, in motion.</h2></div><p>Selected examples across three benchmarks.<br>Watch each method respond to the same prompt.</p></div>
+      <div class="benchmark-nav result-switch" role="tablist" aria-label="Video benchmarks"><button type="button" id="tab-physics-iq-verified" role="tab" data-benchmark="physics-iq-verified" aria-controls="physics-iq-verified" aria-selected="true">Physics-IQ-Verified</button><button type="button" id="tab-videophy2-hard" role="tab" data-benchmark="videophy2-hard" aria-controls="videophy2-hard" aria-selected="false" tabindex="-1">VideoPhy2-Hard</button><button type="button" id="tab-phygenbench" role="tab" data-benchmark="phygenbench" aria-controls="phygenbench" aria-selected="false" tabindex="-1">PhyGenBench</button></div>
+      <div id="benchmark-results"></div>
+      <template id="benchmark-template">
+      <section class="benchmark-section">
+      <div class="benchmark-heading"><h3 class="benchmark-name"></h3><p class="benchmark-count"></p></div>
+      <div class="scene-tabs" role="group" aria-label="Choose an example"></div>
+      <p class="scene-position" aria-live="polite"></p>
+      <article class="comparison-panel">
+        <div class="scene-heading"><div><p class="scene-meta eyebrow"></p><h4 class="scene-title"></h4></div><span class="all-methods">All 7 methods</span></div>
+        <p class="prompt"></p>
+        <div class="playback"><button class="play primary" type="button">Play together</button><button class="restart" type="button" aria-label="Restart all videos">↺ Restart</button><label class="timeline"><span class="sr-only">Video position</span><input class="seek" type="range" min="0" max="1000" value="0" step="1"></label><output class="time">0.0 / 0.0 s</output><div class="speed-switch" role="group" aria-label="Playback speed"><button type="button" data-speed="0.5" aria-pressed="false">0.5×</button><button type="button" data-speed="1" aria-pressed="true">1×</button></div></div>
+        <p class="scroll-hint">Swipe left or right to explore the frames <span aria-hidden="true">↔</span></p>
+        <div class="comparison-scroll-shell"><div class="comparison-table-scroll" tabindex="0" role="region" aria-label="Videos and shared frame timestamps; scroll horizontally on small screens"><div class="comparison-table">
+        <div class="comparison-columns"><span>Video</span><div class="shared-timestamps"></div></div>
+        <div class="video-grid expanded" role="region" aria-label="Method videos with temporal frames"></div>
+        </div></div></div>
+        <p class="player-note" aria-live="polite">Synchronized playback · Original aspect ratios · Audio muted</p>
+      </article>
+      </section>
+      </template>
+      <noscript><p>Enable JavaScript to use synchronized video comparisons.</p></noscript>
+    </section>
+
+    <section id="method" class="wrap section"><div class="section-heading"><div><p class="eyebrow">02 / The method</p><h2>Pipeline</h2></div><p>From candidate videos to a refined physical reward.</p></div><figure class="figure-panel"><a href="assets/figures/pipeline.webp" target="_blank" rel="noopener"><img src="assets/figures/pipeline.webp" alt="SPAR pipeline: candidate generation, self-referenced rewards, spatial and temporal refinement, and reward-based selection." loading="lazy"></a><figcaption>The SPAR framework. Select the figure to explore it at full resolution.</figcaption></figure><div class="steps"><article><span>01</span><h3>Establish a reference</h3><p>Repeat each video's own anchor frames to construct static clips that preserve its scene content.</p></article><article><span>02</span><h3>Refine the reward</h3><p>Combine spatial focusing with temporal refinement to capture localized interactions and feature changes.</p></article><article><span>03</span><h3>Select the dynamics</h3><p>Use the resulting reward to select physically plausible candidates at inference time.</p></article></div></section>
+
+    <section id="experiments" class="wrap section quantitative">
+      <div class="section-heading"><div><p class="eyebrow">03 / Quantitative results</p><h2>Physical alignment, measured.</h2></div><p>Three benchmarks. A shared candidate pool.<br>One reward configuration.</p></div>
+      <p class="results-intro">SPAR, WMReward, and GeoPhys select from the same three MiniMax-H3 candidates per input: <strong>1,614 videos across 538 inputs</strong>. The results cover both image-to-video continuation and text-to-video generation.</p>
+      <div class="result-summary"><article data-theme="physicsiq"><h3>Physics-IQ Verified</h3><span class="score">44.47</span><p>SPAR · +1.59 points over WMReward</p></article><article data-theme="videophy"><h3>VideoPhy-2 Hard</h3><span class="score">62.78</span><p>SPAR · +1.67 percentage points over WMReward</p></article><article data-theme="phygen"><h3>PhyGenBench</h3><span class="score">65.00</span><p>SPAR · +3.12 points over WMReward</p></article></div>
+      <article class="results-card"><div class="table-title"><h3>Benchmark results</h3><p class="ranking-key"><strong>Best</strong><span class="second-score">Second best</span><span>Higher is better ↑</span></p></div><div class="result-switch" role="group" aria-label="Choose benchmark results"><button type="button" data-breakdown="physicsiq" aria-pressed="true">Physics-IQ Verified</button><button type="button" data-breakdown="videophy" aria-pressed="false">VideoPhy-2 Hard</button><button type="button" data-breakdown="phygen" aria-pressed="false">PhyGenBench</button><button type="button" data-breakdown="overall" aria-pressed="false">Summary table</button></div><div id="breakdown-table"></div><p id="breakdown-note" class="results-note"></p></article>
+    </section>
+    <section id="user-study" class="wrap section human-study">
+      <div class="section-heading"><div><p class="eyebrow">04 / Human evaluation</p><h2>User Study</h2></div><p>Physical plausibility and event completion,<br>rated independently.</p></div>
+      <div class="study-layout"><aside class="study-design"><h3>Human evaluation</h3><div class="study-numbers"><div><strong>20</strong><span>Completed questionnaires</span></div><div><strong>15</strong><span>Scenes across 3 benchmarks</span></div><div><strong>744</strong><span>Video evaluations</span></div></div><p>Participants rated physical plausibility and event completion separately on <strong>1–5 scales</strong>. Method identities and automatic scores were hidden; video and scene orders were randomized.</p><p>Each scene received eight evaluations. Identical selections were shown once, with the same rating assigned to each corresponding method.</p><p>SPAR received the highest reported mean for both criteria: <strong>4.083</strong> for physical plausibility and <strong>4.317</strong> for event completion.</p></aside>
+<article class="study-chart"><div class="result-switch" role="group" aria-label="Human evaluation view"><button type="button" data-human-metric="0" aria-pressed="true">Physical plausibility</button><button type="button" data-human-metric="1" aria-pressed="false">Event completion</button><button type="button" data-human-metric="table" aria-pressed="false">Table</button></div><h3 id="human-metric">Physical plausibility</h3><p class="results-note study-legend">Mean rating · 1–5 scale · Higher is better<span id="human-ranking-key" hidden> · <strong>Best</strong> · <span class="second-score">Second best</span></span></p><div id="human-chart" role="img"></div><div class="rating-axis" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><div id="human-table-panel" hidden><div id="human-table"></div><p class="results-note table-footnote">“Unable to judge” responses are excluded. MiniMax-H3 uses one uniformly sampled candidate fixed before rating.</p></div></article></div>
+    </section>
+  </main>
+  <footer class="wrap"><span class="wordmark">SPAR.</span><p>Self-Referenced World-Model Rewards<br>for Physical Alignment in Video Generation</p><a href="#">Back to top ↑</a></footer>
+</body>
+</html>
